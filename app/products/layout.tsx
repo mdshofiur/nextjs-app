@@ -8,8 +8,8 @@ interface LayoutProps {
 export default function Layout({ children, modal }: LayoutProps) {
   return (
     <Fragment>
-      {children}
       {modal}
+      {children}
     </Fragment>
   );
 }
