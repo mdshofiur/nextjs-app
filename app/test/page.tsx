@@ -2,10 +2,13 @@ import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import SearchInput from "@/components/image-upload/search";
-// import { URLSearchParams } from "url";
 
 async function getData(search: string) {
-  const res = await fetch(`https://dummyjson.com/products/search?q=${search}`);
+  const res = await fetch(
+    `https://dummyjson.com/products/search?q=${
+      search !== undefined ? search : ""
+    }`
+  );
   if (!res.ok) {
     // This will activate the closest `error.js` Error Boundary
     throw new Error("Failed to fetch data");
@@ -20,6 +23,7 @@ export default async function Page({
 }) {
   const { search } = searchParams;
   const data = await getData(search);
+ 
   return (
     <main className="container mx-auto py-10 min-h-screen">
       <h1 className="text-3xl font-semibold pb-10">Test Product</h1>
@@ -49,11 +53,10 @@ export default async function Page({
             </Link>
           </div>
         ))}
-        
       </div>
       {data.products.length === 0 && (
-          <div className="text-center text-2xl">No products found</div>
-        )}
+        <div className="text-center text-2xl">No products found</div>
+      )}
     </main>
   );
 }
