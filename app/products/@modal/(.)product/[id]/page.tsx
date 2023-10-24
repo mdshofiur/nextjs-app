@@ -30,7 +30,7 @@ const Modal = async ({ params }: { params: { id: number } }) => {
           <p className="text-blue-600 mt-2">${product.price}</p>
         </div>
         <div className="modal-footer mt-6 p-3 text-center rounded-lg bg-blue-500 w-fit hover:bg-opacity-80 transition-all">
-          <Link href="/products">CLose</Link>
+          <Link href="/products" scroll={false}>CLose</Link>
         </div>
       </div>
     </div>

@@ -47,6 +47,7 @@ const ProductsPage: React.FC = async () => {
             <Link
               className="text-black mt-2 block bg-blue-600 p-3 rounded-md text-center hover:bg-opacity-80 transition-all"
               href={`/products/product/${product.id}`}
+              scroll={false}
             >
               View Details
             </Link>
