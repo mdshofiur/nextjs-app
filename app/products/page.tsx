@@ -1,19 +1,8 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { Product } from "@/interface/product.interface";
 
-interface Product {
-  id: number;
-  title: string;
-  description: string;
-  price: number;
-  category: string;
-  image: string;
-  rating: {
-    rate: number;
-    count: number;
-  };
-}
 
 async function getData() {
   const res = await fetch("https://fakestoreapi.com/products");

@@ -1,14 +1,29 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { Product } from "@/interface/product.interface";
 
+// Generate static paths for all products
+export async function generateStaticParams() {
+  const posts = await fetch("https://fakestoreapi.com/products").then((res) =>
+    res.json()
+  );
+  return posts.map((post: Product) => ({
+    id: post.id.toString(),
+  }));
+}
+
+// Get Product data based on id
 async function getProduct(productId: number) {
   const res = await fetch(`https://fakestoreapi.com/products/${productId}`);
   return res.json();
 }
 
+// This is the page component
 const ProductPage = async ({ params }: { params: { id: number } }) => {
-  const product = await getProduct(params.id);
+  const {id} = params;
+  const product = await getProduct(id);
+
   return (
     <section className="container mx-auto py-10 min-h-screen">
       <Link href="/products">All Products</Link>

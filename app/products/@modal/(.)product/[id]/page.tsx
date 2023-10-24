@@ -1,14 +1,28 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { Product } from "@/interface/product.interface";
 
+// Generate static paths for all products
+export async function generateStaticParams() {
+  const posts = await fetch("https://fakestoreapi.com/products").then((res) =>
+    res.json()
+  );
+  return posts.map((post: Product) => ({
+    id: post.id.toString(),
+  }));
+}
+
+// Get Product data based on id
 async function getProduct(productId: number) {
   const res = await fetch(`https://fakestoreapi.com/products/${productId}`);
   return res.json();
 }
 
+// This is the page component
 const Modal = async ({ params }: { params: { id: number } }) => {
-  const product = await getProduct(params.id);
+  const {id} = params;
+  const product = await getProduct(id);
   return (
     <div
       className={`fixed inset-0 flex items-center justify-center z-50 transition-opacity duration-300 `}
@@ -30,7 +44,9 @@ const Modal = async ({ params }: { params: { id: number } }) => {
           <p className="text-blue-600 mt-2">${product.price}</p>
         </div>
         <div className="modal-footer mt-6 p-3 text-center rounded-lg bg-blue-500 w-fit hover:bg-opacity-80 transition-all">
-          <Link href="/products" scroll={false}>CLose</Link>
+          <Link href="/products" scroll={false}>
+            CLose
+          </Link>
         </div>
       </div>
     </div>
