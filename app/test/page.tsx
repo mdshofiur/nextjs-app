@@ -46,7 +46,7 @@ export default async function Page({
             <p className="text-blue-600 mt-2">${product.category}</p>
             <Link
               className="text-black mt-2 block bg-blue-600 p-3 rounded-md text-center hover:bg-opacity-80 transition-all"
-              href={`/products/product/${product.id}`}
+              href={`/test/${product.id}`}
               scroll={false}
             >
               View Details
