@@ -11,7 +11,7 @@ type Props = {
 
 // Generate metadata for this page
 export async function generateMetadata(
-  { params, searchParams }: Props,
+  { params }: Props,
   parent: ResolvingMetadata
 ): Promise<Metadata> {
   // read route params
@@ -24,7 +24,33 @@ export async function generateMetadata(
     }
   );
 
+  // optionally access and extend (rather than replace) parent metadata
+  const previousImages = (await parent).openGraph?.images || []
+
   return {
+    metadataBase: new URL('http://localhost:3000'),
+    robots: {
+      index: false,
+      follow: true,
+      nocache: true,
+      googleBot: {
+        index: true,
+        follow: false,
+        noimageindex: true,
+        'max-video-preview': -1,
+        'max-image-preview': 'large',
+        'max-snippet': -1,
+      },
+    },
+    icons: {
+      icon: '/opengraph-image.png',
+      // shortcut: '/shortcut-icon.png',
+      // apple: '/apple-icon.png',
+      // other: {
+      //   rel: 'apple-touch-icon-precomposed',
+      //   url: '/apple-touch-icon-precomposed.png',
+      // },
+    },
     title: product.title,
     description: product.description,
   };
