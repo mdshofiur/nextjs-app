@@ -1,7 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
-import SearchInput from "@/components/image-upload/search";
+import SearchInput from "@/components/search";
 
 async function getData(search: string) {
   const res = await fetch(

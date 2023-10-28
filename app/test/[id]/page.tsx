@@ -24,18 +24,12 @@ export async function generateMetadata(
     }
   );
 
-  // optionally access and extend (rather than replace) parent metadata
-  const previousImages = (await parent).openGraph?.images || [];
-  console.log("🚀  previousImages:", previousImages);
-
   return {
     title: product.title,
     description: product.description,
-    openGraph: {
-      images: ["/some-specific-page-image.jpg", ...previousImages],
-    },
   };
 }
+
 
 // Generate static paths for all products
 export async function generateStaticParams() {
