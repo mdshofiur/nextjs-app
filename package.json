@@ -9,11 +9,13 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@aws-sdk/client-s3": "^3.438.0",
     "@types/node": "20.6.3",
     "@types/react": "18.2.22",
     "@types/react-dom": "18.2.7",
     "@vercel/blob": "^0.14.0",
     "autoprefixer": "10.4.15",
+    "aws-sdk": "^2.1483.0",
     "eslint": "8.49.0",
     "eslint-config-next": "13.5.1",
     "next": "^14.0.0",
