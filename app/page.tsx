@@ -13,10 +13,6 @@ const options = [
 ];
 
 const Home = () => {
-   /* -------------------------------------------------------------------------- */
-   /*                             Select custom style                            */
-   /* -------------------------------------------------------------------------- */
-
 
    return (
       <main className='container mx-auto bg-white-500/50 min-h-screen py-10'>
@@ -35,6 +31,22 @@ const Home = () => {
                },
             })}
             isMulti
+            name='colors'
+            options={options}
+            className='basic-multi-select max-w-[300px] w-full'
+            classNamePrefix='react-select'
+         />
+         <br />
+         <Select
+            placeholder='Please select one'
+            styles={customStyles}
+            theme={(theme) => ({
+               ...theme,
+               colors: {
+                  ...theme.colors,
+                  primary25: '#39A527',
+               },
+            })}
             name='colors'
             options={options}
             className='basic-multi-select max-w-[300px] w-full'
